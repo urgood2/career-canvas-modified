@@ -17,6 +17,12 @@ A modern, responsive Hugo theme for personal websites and portfolios, created by
 - Tailwind CSS for styling
 - Optimized for technical and engineering portfolios
 
+## Demo
+
+See the theme in action at [felipecordero.com](https://felipecordero.com) - my personal website built with CareerCanvas.
+
+![CareerCanvas Demo](https://raw.githubusercontent.com/felipecordero/felipecordero.github.io/main/static/images/personal_web_demo.png)
+
 ## Installation
 
 ### As a Git Submodule
