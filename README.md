@@ -98,33 +98,79 @@ The theme includes a gallery shortcode for showcasing your work:
 {{< gallery dir="images/your-gallery" >}}
 ```
 
-## Development
+## 🚀 Development
 
-This theme uses Tailwind CSS for styling. To modify the styles:
+To start the development server:
 
-1. Install dependencies:
 ```bash
-npm install
+npm run dev
 ```
 
-2. Build CSS:
+This command runs `hugo server -D`, which starts a local server and includes draft content (content with `draft: true` in the front matter). This is useful for previewing unpublished or in-progress content during development.
+
+The site will be available at `http://localhost:1313`
+
+## 🏗️ Building
+
+To build the site for production, you need to:
+
+1. Build the CSS with Tailwind:
+   ```bash
+   npm run build:css
+   ```
+
+2. Build the site with Hugo:
+   ```bash
+   npm run build
+   ```
+
+Or you can do both in one command:
 ```bash
-npm run build:css
+npm run build:css && npm run build
 ```
 
-3. Watch for changes:
-```bash
-npm run watch:css
-```
+The built site will be in the `public/` directory.
 
-## Author
+Note: The CSS build step is necessary because the site uses Tailwind CSS, which needs to be processed to generate the final CSS file with only the used styles.
 
-Created by [Felipe Cordero](https://felipecordero.com) - Structural engineer and software developer combining 14+ years in AEC with AI/ML expertise.
+## 📁 Project Structure
 
-## Contributing
+- `assets/` - Contains source files for CSS, JavaScript, and other assets
+- `content/` - Contains the content of your site
+- `static/` - Contains static files like images
+- `themes/careercanvas/` - Contains the CareerCanvas theme
+- `config.toml` - Main configuration file
+- `tailwind.config.js` - Tailwind CSS configuration
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+## 🛠️ Technologies Used
 
-## License
+- [Hugo](https://gohugo.io/) - Static site generator
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin) - Typography plugin for Tailwind CSS
+- [CareerCanvas](https://github.com/felipecordero/careercanvas) - Custom Hugo theme
 
-This theme is released under the MIT License. See the [LICENSE](LICENSE) file for more information. 
+## 👨‍💻 About the Theme
+
+The CareerCanvas theme is my own creation, designed specifically for technical and engineering portfolios. It features:
+- Modern, responsive design
+- Dark mode support
+- Interactive components
+- Image galleries
+- Multilingual support
+- Optimized for technical content
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/felipecordero/careercanvas/issues).
+
+## 📫 Contact
+
+For any questions or suggestions, please open an issue in the GitHub repository or visit [felipecordero.com](https://felipecordero.com).
+
+## 🚨 Important Note
+
+The built CSS file (`static/css/main.css`) is committed to this repository so that users can use the theme without running npm or Tailwind. If you make changes to the CSS source files, please run `npm run build:css` and commit the updated `main.css` file. 
