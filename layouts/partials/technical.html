@@ -1,0 +1,32 @@
+<!-- Technical Skills Section -->
+<section id="technical" class="py-16 bg-gray-50 dark:bg-gray-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {{ with .Site.GetPage "technical" }}
+      <!-- Section heading -->
+      <h2 class="text-3xl font-heading font-bold text-center mb-16 text-gray-900 dark:text-white">
+        {{ .Params.intro }}
+      </h2>
+
+      <!-- Technical skills groups -->
+      <div class="space-y-8">
+        {{ range .Params.technical_groups }}
+          <div class="text-center">
+            <h3 class="text-2xl font-semibold font-heading text-gray-800 dark:text-gray-200 pb-0 mb-0">{{ .title }}</h3>
+          </div>
+          <div class="flex flex-wrap justify-center gap-3">
+            {{ range .skills }}
+            <span class="skill-pill bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-4 py-2 rounded-full font-medium transition-transform hover:scale-105 flex items-center gap-2">
+              {{ if in (slice "python" "js" "html5" "linux" "docker" "github" "gitlab") .icon }}
+              <i class="fab fa-{{ .icon }} text-blue-600 dark:text-blue-300" aria-hidden="true"></i>
+              {{ else }}
+              <i class="fas fa-{{ .icon }} text-blue-600 dark:text-blue-300" aria-hidden="true"></i>
+              {{ end }}
+              {{ .name }}
+            </span>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+</section> 
