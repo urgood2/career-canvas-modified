@@ -2,11 +2,9 @@
   <section id="skills" class="py-16 bg-gray-50 dark:bg-gray-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {{ with .Site.GetPage "skills" }}
-  
         <!-- Section heading -->
-        <h2 class="text-3xl font-heading font-bold text-center mb-12 text-gray-900 dark:text-white">
-          {{ .Params.intro }}
-        </h2>
+        <h2 class="text-3xl font-bold text-center mb-4 font-heading text-gray-900 dark:text-white">{{ .Title }}</h2>
+        <p class="text-lg text-center mb-12 text-gray-600 dark:text-gray-400 italic">{{ .Params.intro }}</p>
   
         <!-- Domain grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">

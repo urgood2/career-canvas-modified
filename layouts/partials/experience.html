@@ -1,7 +1,8 @@
 <section id="experience" class="py-16 bg-white dark:bg-gray-800">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     {{ with .Site.GetPage "experience" }}
-    <h2 class="text-3xl font-bold text-center mb-12 font-heading text-gray-900 dark:text-white">{{ .Params.intro }}</h2>
+    <h2 class="text-3xl font-bold text-center mb-4 font-heading text-gray-900 dark:text-white">{{ .Title }}</h2>
+    <p class="text-lg text-center mb-12 text-gray-600 dark:text-gray-400 italic">{{ .Params.intro }}</p>
 
     <div class="text-center mb-12">
       <div class="flex space-x-4 justify-center">
