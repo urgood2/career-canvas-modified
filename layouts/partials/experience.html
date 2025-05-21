@@ -6,15 +6,16 @@
 
     <div class="text-center mb-12">
       <div class="flex space-x-4 justify-center">
-        <a href="{{ $.Site.Params.resume_url_en }}" target="_blank" rel="noopener noreferrer"
-           class="flex items-center bg-blue-600 dark:bg-blue-500 text-white text-lg px-6 py-4 rounded-lg font-semibold shadow hover:bg-blue-700 dark:hover:bg-blue-600 transition duration-300">
+        {{ $resumeLabel := $.Site.Params.resume_label }}
+        {{ $buttonClass := "flex items-center bg-blue-600 dark:bg-blue-500 text-white text-lg px-6 py-4 rounded-lg font-semibold shadow hover:bg-blue-700 dark:hover:bg-blue-600 transition duration-300" }}
+        
+        <a href="{{ $.Site.Params.resume_url_en }}" target="_blank" rel="noopener noreferrer" class="{{ $buttonClass }}">
           <i class="fas fa-file-pdf text-2xl mr-3"></i>
-          Download Full Resume (EN)
+          {{ $resumeLabel }} (EN)
         </a>
-        <a href="{{ $.Site.Params.resume_url_fr }}" target="_blank" rel="noopener noreferrer"
-           class="flex items-center bg-blue-600 dark:bg-blue-500 text-white text-lg px-6 py-4 rounded-lg font-semibold shadow hover:bg-blue-700 dark:hover:bg-blue-600 transition duration-300">
+        <a href="{{ $.Site.Params.resume_url_fr }}" target="_blank" rel="noopener noreferrer" class="{{ $buttonClass }}">
           <i class="fas fa-file-pdf text-2xl mr-3"></i>
-          Download Full Resume (FR)
+          {{ $resumeLabel }} (FR)
         </a>
       </div>
     </div>

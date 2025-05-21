@@ -60,7 +60,7 @@ theme = "careercanvas"
   # Resume/CV
   resume_url_en = "/files/your-resume-en.pdf"  # Path to English resume
   resume_url_fr = "/files/your-resume-fr.pdf"  # Path to French resume (optional)
-  resume_label = "Download Full Resume"
+  resume_label = "Full Resume"
 
   # Social Icons
   [[params.social]]
