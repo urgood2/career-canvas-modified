@@ -28,12 +28,23 @@
                       <div class="relative rounded-lg cover-media ring-1 ring-black/5">
                         <!-- Image (2:3 portrait) -->
                         <div class="w-full aspect-[2/3] bg-gray-200 dark:bg-gray-600 cover-media">
-                          <img
-                            src="{{ $skill.image }}"
-                            alt="{{ $skill.name_en }} / {{ $skill.name_ko }}"
-                            loading="lazy"
-                            class="h-full w-full object-cover"
-                          />
+                          {{ $src := $skill.image }}
+                          {{ $img := "" }}
+
+                          {{ if or (hasPrefix $src "http://") (hasPrefix $src "https://") }}
+                            {{ $img = $src }}
+                          {{ else if hasPrefix $src "/" }}
+                            {{ $img = $src | relURL }}
+                          {{ else }}
+                            {{ with .Resources.GetMatch $src }}
+                              {{ $img = .RelPermalink }}
+                            {{ else }}
+                              {{ $img = $src | relURL }} {{/* fallback */}}
+                            {{ end }}
+                          {{ end }}
+
+                          <img src="{{ $img }}" alt="{{ $skill.name_en }} / {{ $skill.name_ko }}" loading="lazy"
+                               class="h-full w-full object-cover" />
                         </div>
 
                         <!-- Bottom caption: two lines -->
