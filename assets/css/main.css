@@ -211,6 +211,13 @@
     border-color: var(--color-third);
   }
 
+  /* Portfolio section specific hover effects */
+  #portfolio .project-card:hover {
+    transform: translateY(0px) scale(1.00);
+    box-shadow: 0 10px 25px -5px var(--color-third), 0 4px 6px -2px var(--color-shadow-lighter), 0 0 0 3px var(--color-third);
+    border-color: var(--color-third);
+  }
+
   /* Navigation */
   .nav-link {
     position: relative;

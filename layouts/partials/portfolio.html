@@ -1,0 +1,97 @@
+<!-- Technical Skills Section -->
+<section id="portfolio" class="py-12 bg-bg-secondary dark:bg-bg-secondary border-t border-border-primary">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {{ with .Site.GetPage "portfolio" }}
+      <!-- Section heading -->
+      <h2 class="text-3xl font-bold text-center mb-4 font-heading text-text-primary dark:text-text-primary">{{ .Title }}</h2>
+      <p class="text-lg text-center mb-12 text-gray-700 dark:text-text-tertiary italic">{{ .Params.intro }}</p>
+
+      <!-- Technical skills groups in cards -->
+      <!-- Cover cards grid (one card per cover) -->
+      <div class="grid gap-6 justify-items-center"
+        style="grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));">
+        {{ range $group := .Params.technical_groups }}
+          {{ range $skill := $group.skills }}
+
+            {{/* Cover mode if name_en/name_ko present */}}
+            {{ $isCover := or (isset $skill "name_en") (isset $skill "name_ko") }}
+
+            {{ if $isCover }}
+              <!-- Single COVER CARD — same glow/zoom behavior as your reference -->
+              <a href="{{ $skill.link }}" target="_blank" rel="noopener" class="group block">
+                <!-- Card wrapper: glow lives here -->
+                <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 project-card border border-gray-200 dark:border-gray-600">
+                  
+                  <!-- Inner content wrapper: zoom lives here (matches your hover:scale-110 pattern) -->
+                  <div class="project-inner">
+                    <div class="transition-all duration-300">
+                      <div class="relative rounded-lg overflow-hidden ring-1 ring-black/5">
+                        <!-- Image (2:3 portrait) -->
+                        <div class="w-full aspect-[2/3] bg-gray-200 dark:bg-gray-600 overflow-hidden">
+                          <img
+                            src="{{ $skill.image }}"
+                            alt="{{ $skill.name_en }} / {{ $skill.name_ko }}"
+                            loading="lazy"
+                            class="h-full w-full object-cover"
+                          />
+                        </div>
+
+                        <!-- Bottom caption: two lines -->
+                        <div class="absolute inset-x-0 bottom-0">
+                          <div class="bg-gradient-to-t from-black/70 via-black/30 to-transparent p-2">
+                            <div class="text-[0.9rem] leading-tight font-medium text-white truncate">
+                              {{ $skill.name_en }}
+                            </div>
+                            <div class="text-[0.82rem] leading-tight text-gray-200 truncate">
+                              {{ $skill.name_ko }}
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Optional: subtle overlay on hover (kept, doesn’t affect glow) -->
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </a>
+
+
+
+
+            {{ else }}
+              <!-- Non-cover item: render as an icon/logo CARD -->
+              <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-gray-600 flex flex-col items-center text-center">
+                {{ if $skill.image }}
+                  <img src="{{ $skill.image | relURL }}" alt="{{ or $skill.name $skill.name_en }}"
+                       width="56" height="56" loading="lazy"
+                       class="mb-2 rounded-md object-contain aspect-square bg-white/20 p-1" />
+                {{ else if $skill.fa_class }}
+                  <i class="{{ $skill.fa_class }} text-5xl mb-2 text-text-primary/80" aria-hidden="true"></i>
+                {{ else if $skill.devicon_name }}
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/{{ $skill.devicon_name }}/{{ $skill.devicon_name }}-original.svg"
+                       alt="{{ or $skill.name $skill.name_en }}" width="56" height="56" class="mb-2" />
+                {{ else }}
+                  {{ $icon := $skill.icon }}
+                  {{ if eq $skill.icon "js" }}{{ $icon = "javascript" }}{{ end }}
+                  {{ if eq $skill.icon "css3-alt" }}{{ $icon = "css3" }}{{ end }}
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/{{ $icon }}/{{ $icon }}-original.svg"
+                       alt="{{ or $skill.name $skill.name_en }}" width="56" height="56" class="mb-2" />
+                {{ end }}
+                <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">
+                  {{ or $skill.name $skill.name_en }}
+                </span>
+              </div>
+            {{ end }}
+
+          {{ end }}
+        {{ end }}
+      </div>
+
+      <p class="mt-8 text-center text-sm text-gray-500 dark:text-gray-400">
+        Cover art © their respective owners. Displayed here for identification and portfolio purposes only.
+      </p>
+    {{ end }}
+  </div>
+</section> 
