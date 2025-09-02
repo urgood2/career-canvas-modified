@@ -218,6 +218,18 @@
     border-color: var(--color-third);
   }
 
+  /* Zoom the image *container* on hover */
+  #portfolio .project-card .cover-media {
+    overflow: hidden;                 /* crop the zoom */
+    transform-origin: center;
+    transition: transform .3s ease;
+    will-change: transform;
+  }
+
+  #portfolio .project-card:hover .cover-media {
+    transform: scale(1.06);
+  }
+
   /* Navigation */
   .nav-link {
     position: relative;
