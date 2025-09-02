@@ -21,6 +21,7 @@
             <!-- Skills flex layout with icons and text below -->
             <div class="flex flex-wrap gap-6 justify-center">
               {{ range $group.skills }}
+<<<<<<< HEAD
               <div class="flex flex-col items-center text-center">
                 {{ if .devicon_name }}
                   <!-- Use explicit devicon_name if provided -->
@@ -67,7 +68,36 @@
                   <i class="fas fa-{{ .icon }} text-5xl mb-2 {{ $randomColor }}" data-animation="skill-icon" aria-hidden="true"></i>
                 {{ end }}
                 <span class="text-sm font-semibold text-text-secondary dark:text-text-secondary">{{ .name }}</span>
+=======
+              <div class="flex flex-col items-center text-center transition-all duration-300 hover:scale-110">
+                {{ if .image }}
+                  <!-- Use your custom image -->
+                  <img src="{{ .image | relURL }}"
+                       alt="{{ .name }}"
+                       width="56" height="56"
+                       loading="lazy"
+                       class="mb-2 rounded-md object-contain aspect-square bg-white/20 p-1" />
+                {{ else if .fa_class }}
+                  <!-- Use Font Awesome -->
+                  <i class="{{ .fa_class }} text-5xl mb-2 text-text-primary/80" aria-hidden="true"></i>
+                {{ else if .devicon_name }}
+                  <!-- Explicit devicon -->
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/{{ .devicon_name }}/{{ .devicon_name }}-original.svg"
+                       alt="{{ .name }}" width="56" height="56" class="mb-2" />
+                {{ else }}
+                  <!-- Your old auto-mapping fallback -->
+                  {{ $icon := .icon }}
+                  {{ if eq .icon "js" }}{{ $icon = "javascript" }}{{ end }}
+                  {{ if eq .icon "css3-alt" }}{{ $icon = "css3" }}{{ end }}
+                  <!-- etc. -->
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/{{ $icon }}/{{ $icon }}-original.svg"
+                       alt="{{ .name }}" width="56" height="56" class="mb-2" />
+                {{ end }}
+
+                <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">{{ .name }}</span>
+>>>>>>> 8859adff48fba3d27fc37592d51636656c6f528e
               </div>
+
               {{ end }}
             </div>
           </div>
